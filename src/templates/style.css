@@ -1,0 +1,8 @@
+.landing-image {
+    background: rgb(48, 48, 48);
+    background: radial-gradient(circle, rgba(48, 48, 48, 0) 0%, rgba(255, 0, 0, 1) 18%, rgba(0, 0, 0, 0.9668242296918768) 94%) !important;
+}
+
+.center {
+    text-align: center;
+}

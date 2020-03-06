@@ -1,0 +1,12 @@
+.not-found-certificate {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.ui.card>.image>img,
+.ui.cards>.card>.image>img {
+    height: auto;
+    filter: grayscale(30%);
+    -webkit-filter: grayscale(30%);
+}
