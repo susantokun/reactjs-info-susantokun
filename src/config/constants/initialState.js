@@ -18,7 +18,10 @@ const InitialState = {
   certificatesLoading: true,
 
   portfolios: [],
-  portfoliosLoading: true
+  portfoliosLoading: true,
+
+  demos: [],
+  demosLoading: true
 };
 
 export default InitialState;

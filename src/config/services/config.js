@@ -1,5 +1,5 @@
-export const rootPathOffline = "http://127.0.0.1:8000/api/v1/info/";
-export const rootPathOnline = "https://admin.susantokun.com/api/v1/info/";
+export const rootPathOffline = "http://127.0.0.1:8000/api/v1/";
+export const rootPathOnline = "https://admin.susantokun.com/api/v1/";
 
 export const fetchLoading = actionType => {
   return {

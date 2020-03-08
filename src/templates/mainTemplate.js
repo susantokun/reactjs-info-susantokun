@@ -16,6 +16,7 @@ export class MainTemplate extends Component {
     this.props.getPortfolios();
     this.props.getExperiences();
     this.props.getCertificates();
+    this.props.getDemoContents();
   }
 
   render() {
@@ -84,7 +85,8 @@ const mapDispatchToProps = dispatch => ({
   getConfigurations: () => dispatch(GET.getConfigurations()),
   getPortfolios: () => dispatch(GET.getPortfolios()),
   getExperiences: () => dispatch(GET.getExperiences()),
-  getCertificates: () => dispatch(GET.getCertificates())
+  getCertificates: () => dispatch(GET.getCertificates()),
+  getDemoContents: () => dispatch(GET.getDemoContents())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainTemplate);

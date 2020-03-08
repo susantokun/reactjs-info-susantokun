@@ -4,6 +4,28 @@ import actionTypes from "./actionTypes";
 const rootReducer = (state = InitialState, action) => {
   // console.log("action type => ", action.type);
   switch (action.type) {
+    // * DEMOS START
+    // * GET
+    case actionTypes.GET_DEMOS_LOADING:
+      return {
+        ...state,
+        demosLoading: action.loading
+      };
+
+    case actionTypes.GET_DEMOS_FULFILLED:
+      return {
+        ...state,
+        demos: action.payload,
+        demosLoading: action.loading
+      };
+    case actionTypes.GET_DEMOS_REJECTED:
+      return {
+        ...state,
+        error: action.payload,
+        demosLoading: action.loading
+      };
+    // * DEMOS END
+
     // * PORTFOLIOS START
     // * GET
     case actionTypes.GET_PORTFOLIOS_LOADING:

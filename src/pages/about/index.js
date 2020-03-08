@@ -35,7 +35,7 @@ class About extends Component {
                       Susantokun
                     </List.Header>
                     <List.Description as="a">
-                      Blog Pribadi 'Situs Edukasi, Tips dan Tutorial'
+                      Situs Edukasi, Tips dan Tutorial
                     </List.Description>
                   </List.Content>
                 </List.Item>
@@ -43,10 +43,10 @@ class About extends Component {
                   <List.Icon name="eye" size="large" verticalAlign="middle" />
                   <List.Content>
                     <List.Header as="a" href={item.website_3}>
-                      DEMO Susantokun
+                      DEMO.susantokun
                     </List.Header>
                     <List.Description as="a">
-                      Semua hasil coding yang didemonstrasikan secara online
+                      Situs Khusus Demonstrasi
                     </List.Description>
                   </List.Content>
                 </List.Item>

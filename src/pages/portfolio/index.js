@@ -17,11 +17,17 @@ import { TransitionModal } from "semantic-ui-react-transition-modal";
 
 class Portfolio extends Component {
   // componentDidMount() {
-  //   this.props.getPortfolios();
+  //   this.props.getDemoContents();
   // }
 
   render() {
-    const { portfolios, portfoliosLoading, srcPath } = this.props;
+    const {
+      demos,
+      demosLoading,
+      portfolios,
+      portfoliosLoading,
+      srcPath
+    } = this.props;
     const panes = [
       {
         menuItem: "Website",
@@ -231,7 +237,167 @@ class Portfolio extends Component {
           </div>
         )
       },
+      {
+        menuItem: "Tutorial",
+        render: () => (
+          <div>
+            <GetLoading
+              dataLoading={demosLoading}
+              dataLength={demos}
+              dataContent={
+                <Card.Group itemsPerRow={4} stackable doubling>
+                  {demos.map((demo, index) => {
+                    return (
+                      <Card key={index}>
+                        <Card.Content>
+                          <Image
+                            floated="right"
+                            size="mini"
+                            style={{
+                              width: "auto",
+                              height: "30px"
+                            }}
+                            src={srcPath + demo.framework_image}
+                          />
+                          <Card.Header>{demo.framework_name}</Card.Header>
+                          <Card.Meta>{demo.title}</Card.Meta>
+                          <Card.Description>
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: demo.description.substring(0, 60)
+                              }}
+                            ></p>
+                          </Card.Description>
+                        </Card.Content>
+                        <Card.Content>
+                          <div className="ui two buttons">
+                            <TransitionModal
+                              animation="scale"
+                              duration={250}
+                              trigger={
+                                <Button color="red">
+                                  <Icon name="play" />
+                                  Video
+                                </Button>
+                              }
+                              closeIcon
+                              content={
+                                <Modal.Content
+                                  style={{
+                                    textAlign: "center"
+                                  }}
+                                >
+                                  <Header>
+                                    {demo.title} ({demo.framework_name})
+                                  </Header>
+                                  <p>
+                                    Berikut adalah demonstrasi berupa vidio
+                                    mengenai sitem yang dibuat
+                                  </p>
+                                  <Embed
+                                    autoplay={true}
+                                    active={true}
+                                    id={demo.url_youtube}
+                                    iframe={{
+                                      allowFullScreen: true,
+                                      style: {
+                                        padding: 5
+                                      }
+                                    }}
+                                    color="red"
+                                    source="youtube"
+                                  />
+                                </Modal.Content>
+                              }
+                            />
 
+                            <TransitionModal
+                              animation="fly down"
+                              duration={500}
+                              trigger={
+                                <Button color="blue">
+                                  <Icon name="eye" />
+                                  Detail
+                                </Button>
+                              }
+                              closeIcon
+                              content={
+                                <Modal.Content
+                                  style={{
+                                    textAlign: "center"
+                                  }}
+                                >
+                                  <Header>{demo.title}</Header>
+                                  <Table celled striped>
+                                    <Table.Header>
+                                      <Table.Row>
+                                        <Table.HeaderCell colSpan="3">
+                                          Informasi Sistem
+                                        </Table.HeaderCell>
+                                      </Table.Row>
+                                    </Table.Header>
+
+                                    <Table.Body>
+                                      <Table.Row>
+                                        <Table.Cell collapsing>
+                                          <Icon name="angle right" /> Nama
+                                        </Table.Cell>
+                                        <Table.Cell>{demo.title}</Table.Cell>
+                                      </Table.Row>
+
+                                      <Table.Row>
+                                        <Table.Cell collapsing>
+                                          <Icon name="angle right" /> Deskripsi
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                          <p
+                                            dangerouslySetInnerHTML={{
+                                              __html: demo.description
+                                            }}
+                                          ></p>
+                                        </Table.Cell>
+                                      </Table.Row>
+
+                                      <Table.Row>
+                                        <Table.Cell collapsing>
+                                          <Icon name="angle right" /> Kategori
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                          {demo.platform_name}
+                                        </Table.Cell>
+                                      </Table.Row>
+
+                                      <Table.Row>
+                                        <Table.Cell collapsing>
+                                          <Icon name="angle right" /> Framework
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                          {demo.framework_name}
+                                        </Table.Cell>
+                                      </Table.Row>
+
+                                      <Table.Row>
+                                        <Table.Cell collapsing>
+                                          <Icon name="angle right" /> URL
+                                        </Table.Cell>
+                                        <Table.Cell>{demo.url_demo}</Table.Cell>
+                                      </Table.Row>
+                                    </Table.Body>
+                                  </Table>
+                                </Modal.Content>
+                              }
+                            />
+                          </div>
+                        </Card.Content>
+                      </Card>
+                    );
+                  })}
+                </Card.Group>
+              }
+            />
+          </div>
+        )
+      },
       {
         menuItem: "Mobile",
         render: () => (
@@ -279,13 +445,16 @@ class Portfolio extends Component {
 }
 
 const mapStateToProps = state => ({
+  demos: state.demos,
+  demosLoading: state.demosLoading,
   portfolios: state.portfolios,
   portfoliosLoading: state.portfoliosLoading,
   srcPath: state.srcPath
 });
 
 const mapDispatchToProps = dispatch => ({
-  getPortfolios: () => dispatch(GET.getPortfolios())
+  getPortfolios: () => dispatch(GET.getPortfolios()),
+  getDemoContents: () => dispatch(GET.getDemoContents())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);

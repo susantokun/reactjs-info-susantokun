@@ -1,9 +1,18 @@
 import configGet from "./configGet";
 import actionTypes from "../redux/actionTypes";
 
+const getDemoContents = () =>
+  configGet(
+    "demo/contents",
+    true,
+    actionTypes.GET_DEMOS_LOADING,
+    actionTypes.GET_DEMOS_FULFILLED,
+    actionTypes.GET_DEMOS_REJECTED
+  );
+
 const getPortfolios = () =>
   configGet(
-    "portfolios",
+    "info/portfolios",
     true,
     actionTypes.GET_PORTFOLIOS_LOADING,
     actionTypes.GET_PORTFOLIOS_FULFILLED,
@@ -12,7 +21,7 @@ const getPortfolios = () =>
 
 const getExperiences = () =>
   configGet(
-    "experiences",
+    "info/experiences",
     true,
     actionTypes.GET_EXPERIENCES_LOADING,
     actionTypes.GET_EXPERIENCES_FULFILLED,
@@ -21,7 +30,7 @@ const getExperiences = () =>
 
 const getCertificates = () =>
   configGet(
-    "certificates",
+    "info/certificates",
     true,
     actionTypes.GET_CERTIFICATES_LOADING,
     actionTypes.GET_CERTIFICATES_FULFILLED,
@@ -30,7 +39,7 @@ const getCertificates = () =>
 
 const getConfigurations = () =>
   configGet(
-    "configurations",
+    "info/configurations",
     true,
     actionTypes.GET_CONFIGURATIONS_LOADING,
     actionTypes.GET_CONFIGURATIONS_FULFILLED,
@@ -38,6 +47,7 @@ const getConfigurations = () =>
   );
 
 const GET = {
+  getDemoContents,
   getPortfolios,
   getExperiences,
   getCertificates,
