@@ -14,7 +14,7 @@ export const LabelContact = ({ dataContacts = [] }) => {
     <div>
       {dataContacts.map((item, i) => (
         <div key={i}>
-          <Responsive {...Responsive.onlyComputer}>
+          <Responsive minWidth={Responsive.onlyTablet.minWidth}>
             <Container textAlign="center">
               <List
                 horizontal
