@@ -125,9 +125,10 @@ export class FormSendEmail extends Component {
             ref={this._reCaptchaRef}
             sitekey={process.env.REACT_APP_RECAPTCHA_GOOGLE_SITE_KEY}
             onChange={this.handleChangereCaptcha}
-            size="invisible"
+            size="normal"
             badge="bottomleft"
           />
+          <br />
 
           <Button type="submit" content="Send" primary />
         </Form>
