@@ -56,7 +56,7 @@ class Portfolio extends Component {
                           <Card.Description>
                             <p
                               dangerouslySetInnerHTML={{
-                                __html: portfolio.description
+                                __html: portfolio.description.substring(0, 50) + "..."
                               }}
                             ></p>
                           </Card.Description>
