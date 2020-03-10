@@ -19,7 +19,7 @@ export class FormSendEmail extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const recaptchaValue = this._reCaptchaRef.current.execute();
+    const recaptchaValue = this._reCaptchaRef.current.getValue();
 
     if (recaptchaValue === "") {
       alert("gaboleh");
